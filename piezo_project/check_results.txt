@@ -1,0 +1,14 @@
+test_conditional_lomax_mle (__main__.ProjectChecks.test_conditional_lomax_mle) ... ok
+test_finite_population_se_exact_enumeration (__main__.ProjectChecks.test_finite_population_se_exact_enumeration) ... ok
+test_formula_groups_and_repeated_elements (__main__.ProjectChecks.test_formula_groups_and_repeated_elements) ... ok
+test_holm_known_example (__main__.ProjectChecks.test_holm_known_example) ... ok
+test_hypotheses_match_raw_data (__main__.ProjectChecks.test_hypotheses_match_raw_data) ... ok
+test_invalid_formula_fails (__main__.ProjectChecks.test_invalid_formula_fails) ... ok
+test_notebook_scope_and_execution (__main__.ProjectChecks.test_notebook_scope_and_execution) ... ok
+test_summary_matches_raw_data (__main__.ProjectChecks.test_summary_matches_raw_data) ... ok
+test_threshold_text_matches_experiment (__main__.ProjectChecks.test_threshold_text_matches_experiment) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.049s
+
+OK
