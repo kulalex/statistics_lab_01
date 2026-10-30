@@ -1,4 +1,3 @@
-"""Загрузка и подготовка данных: de Jong (piezo.json) и Matbench dielectric (n)."""
 import json, re
 from pathlib import Path
 import numpy as np, pandas as pd
@@ -6,7 +5,7 @@ from mendeleev import element
 
 DATA = Path(__file__).parent / 'data'
 POLAR = {'1', '2', 'm', 'mm2', '4', '4mm', '3', '3m', '6', '6mm'}     # полярные точечные группы
-TOXIC = {'Pb', 'Cd', 'Hg', 'Tl', 'As', 'Be'}                          # рабочее определение «токсичных» элементов (см. ноутбук)
+TOXIC = {'Pb', 'Cd', 'Hg', 'Tl', 'As', 'Be'}                          # рабочее определение «токсичных» элементов
 _cache = {}
 
 
