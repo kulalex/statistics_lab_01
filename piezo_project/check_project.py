@@ -1,4 +1,3 @@
-"""Проверки разбора состава, статистических формул и целостности проекта."""
 from itertools import combinations, product
 from pathlib import Path
 import json
