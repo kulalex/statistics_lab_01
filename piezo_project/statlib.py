@@ -12,8 +12,6 @@ def set_style():
                          'axes.spines.right': False, 'font.size': 10, 'axes.titlesize': 11,
                          'axes.titleweight': 'bold', 'figure.autolayout': True})
 
-
-# ---------------------------------------------------------------- статистики
 def summary(x):
     x = np.asarray(x, float)
     q = np.percentile(x, [25, 50, 75])
@@ -61,9 +59,6 @@ def formula_spread(df, target, min_group=3):
     g['range'] = g['max'] - g['min']
     return g.sort_values('count', ascending=False)
 
-
-
-# ---------------------------------------------------------------- подгонка распределений
 CANDS = {n: getattr(stats, n) for n in ['norm', 'lognorm', 'gamma', 'weibull_min', 'invgauss', 'fisk', 'lomax', 'genpareto',
                                          'burr12', 'genextreme', 'johnsonsu', 'skewnorm', 'invgamma', 'expon']}
 
@@ -105,8 +100,6 @@ def param_bootstrap_ks(dist, x, B=300, seed=RNG_SEED, floc=None):
         cnt += stats.kstest(xb, dist.cdf, args=pb).statistic >= d0
     return p, d0, (cnt + 1) / (B + 1)
 
-
-# ---------------------------------------------------------------- состоятельность
 def consistency_curve(pop, estimators, ns, reps=500, seed=RNG_SEED, replace=False):
     """Для каждого n: reps выборок из 'ген. совокупности', ошибка оценки |θ̂−θ|, смещение и SD."""
     rng = np.random.default_rng(seed)
@@ -127,8 +120,6 @@ def consistency_curve(pop, estimators, ns, reps=500, seed=RNG_SEED, replace=Fals
                          'P(|err|>eps)': np.mean(np.abs(e - truth[k]) > 0.1 * abs(truth[k]))})
     return pd.DataFrame(rows)
 
-
-# ---------------------------------------------------------------- выборки: с возвращением / без
 def sampling_experiment(pop, n, reps=5000, replace=True, seed=RNG_SEED):
     rng = np.random.default_rng(seed)
     means = np.empty(reps); vars_ = np.empty(reps); meds = np.empty(reps)
@@ -154,8 +145,6 @@ def one_sample_report(pop, n, replace, seed=RNG_SEED):
     return {'n': n, 'replace': replace, 'mean': s.mean(), 'std': s.std(ddof=1), 'median': np.median(s),
             'skew': stats.skew(s), 'kurt': stats.kurtosis(s), 'KS D (описательно)': ks.statistic}
 
-
-# ---------------------------------------------------------------- независимость
 def independence_report(a, b, bins=3, B=5000, seed=RNG_SEED):
     a, b = np.asarray(a, float), np.asarray(b, float)
     pr, spr, kt = stats.pearsonr(a, b), stats.spearmanr(a, b), stats.kendalltau(a, b)
@@ -172,8 +161,7 @@ def independence_report(a, b, bins=3, B=5000, seed=RNG_SEED):
             "Cramér V": cramer, 'MI (нат)': mi, 'p (перест., |ρ|)': (cnt + 1) / (B + 1)}, ct
 
 
-
-# ---------------------------------------------------------------- графики
+# графики
 def eda_figure(x, label, dist=None, params=None, dist_name=''):
     """6 панелей для положительных величин с тяжёлым хвостом."""
     x = np.sort(np.asarray(x, float)); n = len(x)
