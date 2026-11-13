@@ -2,8 +2,11 @@
 
 **Читать отчёт:** [обзор](https://htmlpreview.github.io/?https://github.com/kulalex/statistics_lab_01/blob/ktvd-design/docs/index.html) · [спринт 1](https://htmlpreview.github.io/?https://github.com/kulalex/statistics_lab_01/blob/ktvd-design/docs/sprint1.html) · [спринт 2](https://htmlpreview.github.io/?https://github.com/kulalex/statistics_lab_01/blob/ktvd-design/docs/sprint2.html) — HTML-версия с оглавлением и скрытым кодом.
 
-**Исследование (ИнфоХимия):** 502842, 501924, 501195, 504720, 502388 (group_id 454654)<br>
-**Оформление документа (КТвД):** команда дизайнеров. Это fork работы [matthewvaulin/statistics_lab_01](https://github.com/matthewvaulin/statistics_lab_01): расчёты, числа и выводы авторов сохранены, изменены структура и оформление.
+**ИнфоХимия:** 502842, 504720, 502388<br>
+**КТвД (дизайнеры):** 501924, 501195<br>
+**group_id команды:** 454654
+
+Часть КТвД — оформление документа. Это fork работы [matthewvaulin/statistics_lab_01](https://github.com/matthewvaulin/statistics_lab_01): расчёты, числа и выводы авторов сохранены, изменены структура и оформление.
 
 ## О чём работа
 
