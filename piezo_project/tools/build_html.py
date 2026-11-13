@@ -143,9 +143,9 @@ document.getElementById('toggle-code')?.addEventListener('click', function () {
 NUMERIC = re.compile(r'^[\s−\-+]?(\d[\d\s.,]*)(·10[⁻⁰¹²³⁴⁵⁶⁷⁸⁹]+|e[+-]?\d+)?%?$|^[—∞0]$|^−∞$')
 
 
-def png_width(b64):
+def png_size(b64):
     raw = base64.b64decode(b64[:64])
-    return struct.unpack('>I', raw[16:20])[0]
+    return struct.unpack('>II', raw[16:24])
 
 
 def render_output(out):
@@ -157,8 +157,9 @@ def render_output(out):
         data = out['data']
         if 'image/png' in data:
             b64 = ''.join(data['image/png']).replace('\n', '')
-            width = round(png_width(b64) * 96 / FIG_DPI)
-            return f'<div class="out wide"><img alt="" width="{width}" src="data:image/png;base64,{b64}"></div>'
+            width, height = (round(v * 96 / FIG_DPI) for v in png_size(b64))
+            return (f'<div class="out wide"><img alt="" width="{width}" height="{height}" '
+                    f'src="data:image/png;base64,{b64}"></div>')
         if 'text/markdown' in data:
             return markdown2html_mistune(''.join(data['text/markdown']))
         if 'text/html' in data:
