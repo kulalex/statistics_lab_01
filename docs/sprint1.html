@@ -224,7 +224,6 @@ if (!document.getElementById('mathjax-loader')) {
 <li class="l2"><a href="#resume" data-anchor="resume"><span class="num">3.</span>Lab resume — итоги работы</a></li>
 <li class="l3"><a href="#resume-table" data-anchor="resume-table"><span class="num">3.1.</span>Сводные таблицы</a></li>
 <li class="l3"><a href="#resume-conclusions" data-anchor="resume-conclusions"><span class="num">3.2.</span>Общие выводы</a></li>
-<li class="l3"><a href="#cat-mark" data-anchor="cat-mark"><span class="num">3.3.</span>cat_mark_table</a></li>
 <li class="l2"><a href="#refs" data-anchor="refs"><span class="num">4.</span>Список литературы</a></li></ol></nav>
 <main>
 <details class="toc-mobile"><summary>Оглавление</summary><ol><li class="l2"><a href="#toc" data-anchor="toc">Оглавление</a></li>
@@ -251,7 +250,6 @@ if (!document.getElementById('mathjax-loader')) {
 <li class="l2"><a href="#resume" data-anchor="resume"><span class="num">3.</span>Lab resume — итоги работы</a></li>
 <li class="l3"><a href="#resume-table" data-anchor="resume-table"><span class="num">3.1.</span>Сводные таблицы</a></li>
 <li class="l3"><a href="#resume-conclusions" data-anchor="resume-conclusions"><span class="num">3.2.</span>Общие выводы</a></li>
-<li class="l3"><a href="#cat-mark" data-anchor="cat-mark"><span class="num">3.3.</span>cat_mark_table</a></li>
 <li class="l2"><a href="#refs" data-anchor="refs"><span class="num">4.</span>Список литературы</a></li></ol></details>
 
 <h1 id="top">Lab01 - sprint 1. Статистический анализ свойств материалов: пьезоэлектрики и диэлектрики</h1><p><strong>ИнфоХимия:</strong> 502842, 504720, 502388<br/>
@@ -296,7 +294,6 @@ if (!document.getElementById('mathjax-loader')) {
 <li><a data-anchor="resume" href="#resume">3. Lab resume — итоги работы</a><ul>
 <li><a data-anchor="resume-table" href="#resume-table">3.1. Сводные таблицы</a></li>
 <li><a data-anchor="resume-conclusions" href="#resume-conclusions">3.2. Общие выводы</a></li>
-<li><a data-anchor="cat-mark" href="#cat-mark">3.3. cat_mark_table</a></li>
 </ul>
 </li>
 <li><a data-anchor="refs" href="#refs">4. Список литературы</a></li>
@@ -2838,129 +2835,6 @@ $$\ell(\mu,\sigma,\xi)=-m\ln\sigma-\left(1+\frac1\xi\right)\sum_i\ln t_i-\sum_i 
 <p>Группа без шести выбранных элементов содержит материалы с заметными пьезоэлектрическими откликами. Это полезно для предварительного скрининга, однако статистические сравнения не заменяют проверку устойчивости, синтезируемости и безопасности кандидатов. Перенос выводов ограничен составом базы, расчётным происхождением свойств и зависимостью родственных структур.</p>
 <p>Между двумя датасетами нет общего ключа, поэтому связь $n$ с пьезокоэффициентом не оценивалась. Объём на атом используется только как сопутствующий структурный признак первого набора.</p>
 <p>Значение p, напечатанное как 0, означает численное округление или выход за точность вычислений, а не буквально нулевую вероятность. Для GEV при 299 имитациях получено p = 1/300 ≈ 0.0033 — минимально возможное значение при использованной формуле; после поправки Холма p ≈ 0.0167. Для Ломакса p ≈ 0.249, после поправки — около 0.748.</p>
-<p class="back"><a data-anchor="toc" href="#toc">↑ к оглавлению</a></p>
-
-<h3 id="cat-mark"><span class="num">3.3.</span>cat_mark_table</h3><p>Где в документе искать каждый пункт задания.</p>
-<div class="table-wrap md-table"><table>
-<thead>
-<tr>
-<th>cat_id</th>
-<th>notebook_link</th>
-<th>coeff</th>
-<th>comment</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>2.1 Случайная природа величины</td>
-<td><a data-anchor="rv1-desc" href="#rv1-desc">1.1</a>, <a data-anchor="rv2-desc" href="#rv2-desc">2.1</a></td>
-<td></td>
-<td>предсказание по дескрипторам, разброс внутри одного состава, качество сохранённых предсказаний</td>
-</tr>
-<tr>
-<td>2.2 Зависимость величин одной природы</td>
-<td><a data-anchor="rv1-dep" href="#rv1-dep">1.3.1</a>, <a data-anchor="rv2-dep" href="#rv2-dep">2.3.1</a></td>
-<td></td>
-<td>корреляции Пирсона, Спирмена, Кендалла, $\chi^2$, перестановочный тест</td>
-</tr>
-<tr>
-<td>2.3 Состоятельность оценок</td>
-<td><a data-anchor="rv1-cons" href="#rv1-cons">1.3.2</a>, <a data-anchor="rv2-cons" href="#rv2-cons">2.3.2</a></td>
-<td></td>
-<td>имитация по подвыборкам, оценка-контрпример</td>
-</tr>
-<tr>
-<td>2.4 EDA, нормализация</td>
-<td><a data-anchor="rv1-stats" href="#rv1-stats">1.2.1</a>, <a data-anchor="rv1-norm" href="#rv1-norm">1.2.2</a>, <a data-anchor="rv2-stats" href="#rv2-stats">2.2.1</a>, <a data-anchor="rv2-norm" href="#rv2-norm">2.2.2</a></td>
-<td></td>
-<td>шесть панелей на величину, пять преобразований</td>
-</tr>
-<tr>
-<td>2.5 Выборка и генеральная совокупность</td>
-<td><a data-anchor="rv1-sampling" href="#rv1-sampling">1.4</a>, <a data-anchor="rv2-sampling" href="#rv2-sampling">2.4</a></td>
-<td></td>
-<td>отбор с возвращением и без, сравнение с формулой <a data-anchor="eq-1-7" href="#eq-1-7">(1.7)</a></td>
-</tr>
-<tr>
-<td>2.6 Математическая база распределения</td>
-<td><a data-anchor="rv1-math" href="#rv1-math">1.2.4</a>, <a data-anchor="rv2-math" href="#rv2-math">2.2.4</a></td>
-<td></td>
-<td>Ломакс и GEV: плотность, моменты, правдоподобие, квантиль</td>
-</tr>
-<tr>
-<td>2.7 Проверка гипотез</td>
-<td><a data-anchor="rv1-hyp" href="#rv1-hyp">1.5</a>, <a data-anchor="rv2-hyp" href="#rv2-hyp">2.5</a>, <a data-anchor="resume-table" href="#resume-table">3.1</a></td>
-<td></td>
-<td>11 гипотез, поправка Холма</td>
-</tr>
-<tr>
-<td>Доп.: дополнительный датасет</td>
-<td><a data-anchor="data" href="#data">0.5</a></td>
-<td></td>
-<td>два датасета</td>
-</tr>
-<tr>
-<td>Доп.: приведение к стандартному нормальному</td>
-<td><a data-anchor="rv1-norm" href="#rv1-norm">1.2.2</a>, <a data-anchor="rv2-norm" href="#rv2-norm">2.2.2</a></td>
-<td></td>
-<td>z-оценка логарифма, Йео–Джонсон, квантильное преобразование</td>
-</tr>
-<tr>
-<td>Доп.: табличное представление итоговых метрик</td>
-<td><a data-anchor="resume-table" href="#resume-table">3.1</a></td>
-<td></td>
-<td>табл. 3.1 и 3.2</td>
-</tr>
-<tr>
-<td>Доп.: список литературы</td>
-<td><a data-anchor="refs" href="#refs">4</a></td>
-<td></td>
-<td>13 источников и документация</td>
-</tr>
-<tr>
-<td>КТвД: структура исследования</td>
-<td><a data-anchor="toc" href="#toc">оглавление</a>, <a data-anchor="intro-flow" href="#intro-flow">0.2</a></td>
-<td></td>
-<td>разделы по шаблону задания, схема хода работы</td>
-</tr>
-<tr>
-<td>КТвД: индексы разделов</td>
-<td><a data-anchor="toc" href="#toc">оглавление</a></td>
-<td></td>
-<td>сквозная нумерация разделов, рисунков, таблиц и формул</td>
-</tr>
-<tr>
-<td>КТвД: якорные ссылки</td>
-<td><a data-anchor="toc" href="#toc">оглавление</a>, <a data-anchor="intro-flow" href="#intro-flow">0.2</a></td>
-<td></td>
-<td>оглавление, возврат к нему, ссылки на рисунки, таблицы, формулы и литературу</td>
-</tr>
-<tr>
-<td>КТвД: скрытие кода</td>
-<td><a data-anchor="rv1-fit" href="#rv1-fit">1.2.3</a></td>
-<td></td>
-<td>расчёты в <code>statlib.py</code>, в ячейках короткие вызовы; в HTML код свёрнут</td>
-</tr>
-<tr>
-<td>КТвД: масштабы и единицы измерения</td>
-<td><a data-anchor="fig-1-1" href="#fig-1-1">рис. 1.1</a>, <a data-anchor="tab-1-3" href="#tab-1-3">табл. 1.3</a></td>
-<td></td>
-<td>единицы на осях и в таблицах, логарифмические шкалы подписаны</td>
-</tr>
-<tr>
-<td>КТвД: единая стилистика графиков</td>
-<td><a data-anchor="fig-0-1" href="#fig-0-1">рис. 0.1</a>, <a data-anchor="fig-1-2" href="#fig-1-2">рис. 1.2</a></td>
-<td></td>
-<td>один модуль стиля <code>labstyle.py</code>, цвет закреплён за ролью</td>
-</tr>
-<tr>
-<td>КТвД: формулы в LaTeX</td>
-<td><a data-anchor="intro-notation" href="#intro-notation">0.4</a>, <a data-anchor="rv1-math" href="#rv1-math">1.2.4</a></td>
-<td></td>
-<td>единые обозначения в обоих спринтах, нумерация формул</td>
-</tr>
-</tbody>
-</table></div>
 <p class="back"><a data-anchor="toc" href="#toc">↑ к оглавлению</a></p>
 
 <h2 id="refs"><span class="num">4.</span>Список литературы</h2><ol>
