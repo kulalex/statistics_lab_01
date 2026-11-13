@@ -184,8 +184,14 @@ window.MathJax = window.MathJax || {
   tex: {inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true},
   svg: {fontCache: 'global'}
 };
+// MathJax подключается из скрипта, а не тегом: так он загружается и там,
+// где страницу подставляет сторонний скрипт (htmlpreview.github.io).
+if (!document.getElementById('mathjax-loader')) {
+  var loader = document.createElement('script');
+  loader.id = 'mathjax-loader'; loader.async = true; loader.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js';
+  document.head.appendChild(loader);
+}
 </script>
-<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script>
 </head>
 <body class="page-index">
 <header class="top">
