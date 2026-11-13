@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Лабораторная работа 1. Обзор</title>
+<style>
+:root{--bg:#fcfcfb;--surface:#ffffff;--ink:#0b0b0b;--ink2:#52514e;--muted:#8a8985;--line:#e4e3df;
+--accent:#1f5fae;--accent-bg:#eef4fc;--code-bg:#f6f5f2;--w-text:46rem;--w-wide:60rem;color-scheme:light}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:4.2rem}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.62 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+-webkit-text-size-adjust:100%}
+a{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:2px}
+a:hover{text-decoration-thickness:2px}
+.top{position:sticky;top:0;z-index:5;display:flex;gap:.4rem 1.2rem;align-items:center;flex-wrap:wrap;padding:.6rem 1.2rem;
+background:rgba(252,252,251,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);font-size:.92rem}
+.top .brand{font-weight:700;color:var(--ink);text-decoration:none;margin-right:auto}
+.top a.nav{color:var(--ink2);text-decoration:none;padding:.15rem .1rem;border-bottom:2px solid transparent}
+.top a.nav:hover{color:var(--ink)}
+.top a.nav[aria-current=page]{color:var(--ink);border-bottom-color:var(--accent);font-weight:600}
+.top button{font:inherit;color:var(--ink2);background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:.2rem .7rem;cursor:pointer}
+.top button:hover{color:var(--ink);border-color:var(--muted)}
+.layout{display:grid;grid-template-columns:17.5rem minmax(0,1fr);gap:2.5rem;max-width:84rem;margin:0 auto;padding:0 1.2rem}
+nav.toc{position:sticky;top:3.4rem;align-self:start;max-height:calc(100vh - 3.6rem);overflow:auto;padding:1.4rem 0 2rem;font-size:.86rem;line-height:1.35}
+nav.toc .toc-title{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 .6rem}
+nav.toc ol{list-style:none;margin:0;padding:0}
+nav.toc li{margin:0}
+nav.toc a{display:block;padding:.22rem .5rem;border-left:2px solid var(--line);color:var(--ink2);text-decoration:none}
+nav.toc a:hover{color:var(--ink);border-left-color:var(--accent);background:var(--accent-bg)}
+nav.toc li.l2>a{font-weight:600;color:var(--ink);margin-top:.5rem}
+nav.toc li.l3>a{padding-left:1.2rem}
+details.toc-mobile{display:none}
+main{min-width:0;padding:1.6rem 0 5rem}
+main>*{max-width:var(--w-text)}
+main>.wide,main>.out,main>.table-wrap,main>details.code{max-width:var(--w-wide)}
+h1,h2,h3,h4{line-height:1.25;margin:2.2em 0 .6em;text-wrap:balance}
+h1{font-size:2rem;margin-top:.4em;letter-spacing:-.01em}
+h2{font-size:1.5rem;padding-top:1.4rem;border-top:1px solid var(--line)}
+h3{font-size:1.18rem}
+h4{font-size:1rem}
+.num{color:var(--muted);font-weight:600;margin-right:.35em}
+nav.toc .num,details.toc-mobile .num{font-weight:inherit}
+p{margin:.7em 0}
+ul,ol{padding-left:1.4rem}
+li{margin:.25em 0}
+hr{border:0;border-top:1px solid var(--line);margin:2rem 0}
+code{font:.88em/1.5 ui-monospace,"Cascadia Mono",Consolas,Menlo,monospace;background:var(--code-bg);padding:.08em .32em;border-radius:4px}
+blockquote{margin:1em 0;padding:.2em 1em;border-left:3px solid var(--accent);background:var(--accent-bg);border-radius:0 6px 6px 0}
+.table-wrap{overflow-x:auto;margin:.9rem 0 1.3rem;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+table{border-collapse:collapse;font-size:.86rem;line-height:1.35;width:100%;font-variant-numeric:tabular-nums}
+th,td{padding:.42rem .7rem;border-bottom:1px solid var(--line);text-align:right;vertical-align:top;white-space:nowrap}
+thead th{background:#f6f5f2;color:var(--ink2);font-weight:600;border-bottom:1px solid var(--muted);vertical-align:bottom}
+tbody th{font-weight:600;text-align:left;color:var(--ink)}
+tbody tr:last-child>*{border-bottom:0}
+td.txt,th.txt{text-align:left;white-space:normal;min-width:8rem}
+.md-table td,.md-table th{white-space:normal;text-align:left}
+.out{margin:.6rem 0}
+.out img{display:block;max-width:100%;height:auto;margin:0 auto;border:1px solid var(--line);border-radius:8px;background:#fff}
+.out pre.stream{margin:.4rem 0;padding:.6rem .9rem;background:var(--code-bg);border-radius:6px;font:.82rem/1.5 ui-monospace,Consolas,monospace;white-space:pre-wrap;overflow-x:auto}
+p.caption{font-size:.9rem;line-height:1.5;color:var(--ink2);margin:.5rem 0 1.6rem;padding-left:.9rem;border-left:3px solid var(--line);max-width:var(--w-wide)}
+p.caption strong:first-of-type{color:var(--ink)}
+p.caption.tab{margin:1.4rem 0 .4rem}
+details.code{margin:.3rem 0}
+details.code>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:.4rem;font-size:.78rem;color:var(--muted);
+padding:.12rem .55rem;border:1px solid var(--line);border-radius:999px;background:var(--surface);user-select:none}
+details.code>summary::-webkit-details-marker{display:none}
+details.code>summary::before{content:"";width:.42em;height:.42em;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(-45deg);transition:transform .15s}
+details.code[open]>summary::before{transform:rotate(45deg)}
+details.code>summary:hover{color:var(--ink);border-color:var(--muted)}
+details.code>summary .hide{display:none}
+details.code[open]>summary .show{display:none}
+details.code[open]>summary .hide{display:inline}
+details.code .highlight{margin:.4rem 0 .8rem;background:var(--code-bg);border:1px solid var(--line);border-radius:8px;overflow-x:auto}
+details.code pre{margin:0;padding:.8rem 1rem;font:.8rem/1.55 ui-monospace,"Cascadia Mono",Consolas,Menlo,monospace}
+.back{font-size:.85rem;margin-top:1.6rem}
+.back a{color:var(--muted);text-decoration:none}
+.back a:hover{color:var(--accent)}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;padding:.2rem 0;max-width:100%}
+footer{border-top:1px solid var(--line);color:var(--muted);font-size:.85rem;padding:1.2rem;text-align:center}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));gap:1rem;max-width:var(--w-wide)!important;margin:1.4rem 0}
+.card{display:block;padding:1.1rem 1.2rem;border:1px solid var(--line);border-radius:10px;background:var(--surface);text-decoration:none;color:var(--ink)}
+.card:hover{border-color:var(--accent);box-shadow:0 2px 10px rgba(31,95,174,.08)}
+.card .k{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.card h3{margin:.25rem 0 .4rem;font-size:1.15rem}
+.card p{margin:0;color:var(--ink2);font-size:.92rem;line-height:1.5}
+.page-index main{margin:0 auto;max-width:var(--w-wide)}
+.page-index .layout{display:block;max-width:64rem}
+@media (max-width:62rem){
+ .layout{display:block;padding:0 1rem}
+ nav.toc{display:none}
+ details.toc-mobile{display:block;margin:1rem 0;border:1px solid var(--line);border-radius:8px;background:var(--surface);padding:.5rem .9rem;font-size:.9rem}
+ details.toc-mobile summary{cursor:pointer;font-weight:600}
+ details.toc-mobile ol{list-style:none;padding:0;margin:.5rem 0 0}
+ details.toc-mobile li.l3{padding-left:1rem}
+ details.toc-mobile a{display:block;padding:.25rem 0;text-decoration:none}
+ body{font-size:16px}
+ h1{font-size:1.6rem} h2{font-size:1.3rem}
+}
+@media print{.top,nav.toc,details.toc-mobile,details.code,.back{display:none}.layout{display:block}body{font-size:11pt;background:#fff}}
+
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.highlight .hll { background-color: #ffffcc }
+.highlight { background: #f8f8f8; }
+.highlight .c { color: #3D7B7B; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #F00 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666 } /* Operator */
+.highlight .ch { color: #3D7B7B; font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: #3D7B7B; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #9C6500 } /* Comment.Preproc */
+.highlight .cpf { color: #3D7B7B; font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: #3D7B7B; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #3D7B7B; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .ges { font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+.highlight .gr { color: #E40000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #008400 } /* Generic.Inserted */
+.highlight .go { color: #717171 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #04D } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #687822 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #00F; font-weight: bold } /* Name.Class */
+.highlight .no { color: #800 } /* Name.Constant */
+.highlight .nd { color: #A2F } /* Name.Decorator */
+.highlight .ni { color: #717171; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #CB3F38; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #00F } /* Name.Function */
+.highlight .nl { color: #767600 } /* Name.Label */
+.highlight .nn { color: #00F; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #A2F; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #BBB } /* Text.Whitespace */
+.highlight .mb { color: #666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666 } /* Literal.Number.Float */
+.highlight .mh { color: #666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #AA5D1F; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #A45A77; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #A45A77 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #00F } /* Name.Function.Magic */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
+.highlight .il { color: #666 } /* Literal.Number.Integer.Long */
+.highlight{background:var(--code-bg)}
+</style>
+<script>
+window.MathJax = {
+  tex: {inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true},
+  svg: {fontCache: 'global'}
+};
+</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script>
+</head>
+<body class="page-index">
+<header class="top">
+<a class="brand" href="index.html">Лабораторная работа 1</a>
+<a class="nav" href="index.html" aria-current=page>Обзор</a><a class="nav" href="sprint1.html">Спринт 1</a><a class="nav" href="sprint2.html">Спринт 2</a>
+
+</header>
+<div class="layout">
+
+<main>
+
+<h1 id="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0-1.-%D0%A1%D0%B2%D0%BE%D0%B9%D1%81%D1%82%D0%B2%D0%B0-%D0%BF%D1%8C%D0%B5%D0%B7%D0%BE%D1%8D%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%B8%D0%BA%D0%BE%D0%B2-%D0%B8-%D0%B4%D0%B8%D1%8D%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%B8%D0%BA%D0%BE%D0%B2">Лабораторная работа 1. Свойства пьезоэлектриков и диэлектриков</h1><p>Статистическое исследование двух баз расчётных свойств материалов и генераторы случайных чисел для найденных распределений.</p>
+<p><strong>Исследование (ИнфоХимия):</strong> 502842, 501924, 501195, 504720, 502388 (group_id 454654)<br/>
+<strong>Оформление документа (КТвД):</strong> команда дизайнеров</p>
+<div class="cards">
+<a class="card" href="sprint1.html"><span class="k">Спринт 1</span><h3>Анализ случайных величин</h3><p>Пьезокоэффициент и показатель преломления: природа случайности, распределение, зависимость, состоятельность оценок, выборки, 11 гипотез.</p></a>
+<a class="card" href="sprint2.html"><span class="k">Спринт 2</span><h3>Генераторы случайных чисел</h3><p>Четыре генератора для трёх распределений: обратная функция, смесь, квантильное преобразование, метод Бокса–Мюллера. Проверки и сравнение с данными.</p></a>
+</div>
+<h2 id="%D0%A1-%D1%87%D0%B5%D0%B3%D0%BE-%D0%BD%D0%B0%D1%87%D0%B0%D1%82%D1%8C">С чего начать</h2><p>Если тема незнакома, начните с раздела <a href="sprint1.html#intro-about">0.1 «О чём работа»</a> и <a href="sprint1.html#intro-flow">схемы хода исследования</a>. Термины собраны в <a href="sprint1.html#intro-glossary">словаре</a>, буквы в формулах — в <a href="sprint1.html#intro-notation">таблице обозначений</a>.</p>
+<p>Главные результаты:</p>
+<ul>
+<li><a href="sprint1.html#resume">итоги спринта 1</a>: сводные таблицы по двум величинам и общие выводы;</li>
+<li><a href="sprint2.html#resume">итоги спринта 2</a>: какие генераторы исправны и какие модели согласуются с данными.</li>
+</ul>
+<h2 id="%D0%9A%D0%B0%D0%BA-%D1%83%D1%81%D1%82%D1%80%D0%BE%D0%B5%D0%BD%D1%8B-%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D1%8B">Как устроены страницы</h2><ul>
+<li>Слева оглавление, в тексте — ссылки на разделы, рисунки, таблицы, формулы и литературу.</li>
+<li>Код скрыт. Кнопка «Показать код» раскрывает одну ячейку, кнопка «Показать весь код» в шапке — все сразу.</li>
+<li>На графиках цвет закреплён за ролью: синий — данные, оранжевый — теоретическая модель, зелёный — генератор.</li>
+<li>Рисунки, таблицы и формулы пронумерованы по разделам: рис. 1.2 — второй рисунок раздела 1.</li>
+</ul>
+<h2 id="%D0%9A%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B8-%D0%BE%D1%84%D0%BE%D1%80%D0%BC%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F-(%D0%9A%D0%A2%D0%B2%D0%94)">Критерии оформления (КТвД)</h2><div class="table-wrap md-table"><table>
+<thead>
+<tr>
+<th>Критерий</th>
+<th>Где смотреть</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Структура исследования</td>
+<td>оглавления <a href="sprint1.html#toc">спринта 1</a> и <a href="sprint2.html#toc">спринта 2</a>, <a href="sprint1.html#intro-flow">схема хода работы</a></td>
+</tr>
+<tr>
+<td>Индексы разделов</td>
+<td>сквозная нумерация разделов, рисунков, таблиц и формул на обеих страницах</td>
+</tr>
+<tr>
+<td>Якорные ссылки</td>
+<td>оглавление, ссылки «к оглавлению», переходы между спринтами, например из <a href="sprint2.html#intro-task">раздела 0.1 спринта 2</a></td>
+</tr>
+<tr>
+<td>Скрытие кода</td>
+<td><a href="sprint2.html#rnd1-code">раздел 1.3 спринта 2</a>: код генератора раскрывается по клику</td>
+</tr>
+<tr>
+<td>Масштабы и единицы измерения</td>
+<td><a href="sprint1.html#fig-1-1">рис. 1.1 спринта 1</a>, <a href="sprint2.html#fig-5-1">рис. 5.1 спринта 2</a></td>
+</tr>
+<tr>
+<td>Единая стилистика графиков</td>
+<td>один модуль стиля <code>labstyle.py</code> для обоих ноутбуков</td>
+</tr>
+<tr>
+<td>Формулы в LaTeX</td>
+<td><a href="sprint1.html#rv1-math">раздел 1.2.4 спринта 1</a>, <a href="sprint2.html#rnd1-math">раздел 1.2 спринта 2</a></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="%D0%98%D1%81%D1%85%D0%BE%D0%B4%D0%BD%D1%8B%D0%B5-%D0%BC%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8B">Исходные материалы</h2><p>Ноутбуки, данные и код лежат в <a href="https://github.com/kulalex/statistics_lab_01" rel="noopener">репозитории</a>: <code>piezo_project/lab01_sprint1_piezo.ipynb</code>, <code>piezo_project/lab01_sprint2_piezo.ipynb</code>. Страницы собираются из ноутбуков командой <code>python tools/build_html.py</code>.</p>
+
+</main>
+</div>
+<footer>Собрано из ноутбуков репозитория <a href="https://github.com/kulalex/statistics_lab_01">statistics_lab_01</a>. Код свёрнут и раскрывается по клику.</footer>
+<script>
+document.getElementById('toggle-code')?.addEventListener('click', function () {
+  var all = document.querySelectorAll('details.code');
+  var open = !this.dataset.open;
+  all.forEach(function (d) { d.open = open; });
+  this.dataset.open = open ? '1' : '';
+  this.textContent = open ? 'Скрыть весь код' : 'Показать весь код';
+});
+</script>
+</body>
+</html>
