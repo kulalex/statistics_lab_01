@@ -35,7 +35,7 @@ CSS = r'''
 :root{--bg:#fcfcfb;--surface:#ffffff;--ink:#0b0b0b;--ink2:#52514e;--muted:#8a8985;--line:#e4e3df;
 --accent:#1f5fae;--accent-bg:#eef4fc;--code-bg:#f6f5f2;--w-text:46rem;--w-wide:60rem;color-scheme:light}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:4.2rem}
+html{scroll-padding-top:4.2rem}
 body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.62 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
 -webkit-text-size-adjust:100%}
 a{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:2px}
@@ -138,6 +138,31 @@ document.getElementById('toggle-code')?.addEventListener('click', function () {
   this.dataset.open = open ? '1' : '';
   this.textContent = open ? 'Скрыть весь код' : 'Показать весь код';
 });
+// Переход по якорю внутри страницы. Нужен там, где страница подставляется скриптом
+// (htmlpreview.github.io) и браузер сам к якорю не прокручивает.
+function goTo(id) {
+  var el = document.getElementById(id);
+  if (el) { el.scrollIntoView(); }
+  return !!el;
+}
+document.addEventListener('click', function (e) {
+  var a = e.target.closest ? e.target.closest('a[data-anchor]') : null;
+  if (!a || !goTo(a.dataset.anchor)) { return; }
+  e.preventDefault();
+  try { history.pushState(null, '', '#' + a.dataset.anchor); } catch (err) {}
+});
+window.addEventListener('popstate', function () { goTo(decodeURIComponent(location.hash.slice(1))); });
+// Формулы: если MathJax загрузился, а страница не размечена, запускаем разметку сами,
+// затем возвращаемся к якорю из адреса (высота страницы после разметки меняется).
+(function retry(n) {
+  var done = document.querySelector('mjx-container');
+  if (!done && window.MathJax && MathJax.typesetPromise) {
+    MathJax.typesetPromise().then(function () { goTo(decodeURIComponent(location.hash.slice(1))); });
+    return;
+  }
+  if (done) { goTo(decodeURIComponent(location.hash.slice(1))); return; }
+  if (n > 0) { setTimeout(function () { retry(n - 1); }, 600); }
+})(25);
 '''
 
 NUMERIC = re.compile(r'^[\s−\-+]?(\d[\d\s.,]*)(·10[⁻⁰¹²³⁴⁵⁶⁷⁸⁹]+|e[+-]?\d+)?%?$|^[—∞0]$|^−∞$')
@@ -269,8 +294,15 @@ def polish(body, page):
             box.replace_with(det)
 
     # ссылки на соседний ноутбук ведут на соседнюю страницу
+    # приглашение перейти в HTML-версию нужно только в ноутбуке
+    for quote in soup.find_all('blockquote'):
+        if quote.find('a', href=re.compile('htmlpreview')):
+            quote.decompose()
+
     for a in soup.find_all('a', href=True):
         href = a['href']
+        if href.startswith('#'):
+            a['data-anchor'] = href[1:]
         for nb_name, target in LINKS.items():
             if href.startswith(nb_name):
                 a['href'] = target + href[len(nb_name):]
@@ -281,7 +313,7 @@ def polish(body, page):
 
 
 def toc_html(toc):
-    items = '\n'.join(f'<li class="l{name[1]}"><a href="#{ident}">{label}</a></li>' for name, ident, label in toc)
+    items = '\n'.join(f'<li class="l{name[1]}"><a href="#{ident}" data-anchor="{ident}">{label}</a></li>' for name, ident, label in toc)
     return f'<ol>{items}</ol>'
 
 
@@ -305,7 +337,7 @@ def shell(title, body, toc, current, extra_class=''):
 .highlight{{background:var(--code-bg)}}
 </style>
 <script>
-window.MathJax = {{
+window.MathJax = window.MathJax || {{
   tex: {{inlineMath: [['$', '$'], ['\\\\(', '\\\\)']], displayMath: [['$$', '$$'], ['\\\\[', '\\\\]']], processEscapes: true}},
   svg: {{fontCache: 'global'}}
 }};

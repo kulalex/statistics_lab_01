@@ -1,6 +1,6 @@
 # Лабораторная работа № 1: свойства пьезоэлектриков и диэлектриков
 
-**Читать отчёт:** [kulalex.github.io/statistics_lab_01](https://kulalex.github.io/statistics_lab_01/) — работает, когда в настройках репозитория включён GitHub Pages (см. [ниже](#как-открыть-html-версию)).
+**Читать отчёт:** [обзор](https://htmlpreview.github.io/?https://github.com/kulalex/statistics_lab_01/blob/ktvd-design/docs/index.html) · [спринт 1](https://htmlpreview.github.io/?https://github.com/kulalex/statistics_lab_01/blob/ktvd-design/docs/sprint1.html) · [спринт 2](https://htmlpreview.github.io/?https://github.com/kulalex/statistics_lab_01/blob/ktvd-design/docs/sprint2.html) — HTML-версия с оглавлением и скрытым кодом.
 
 **Исследование (ИнфоХимия):** 502842, 501924, 501195, 504720, 502388 (group_id 454654)<br>
 **Оформление документа (КТвД):** команда дизайнеров. Это fork работы [matthewvaulin/statistics_lab_01](https://github.com/matthewvaulin/statistics_lab_01): расчёты, числа и выводы авторов сохранены, изменены структура и оформление.
@@ -17,12 +17,15 @@
 
 ## Как открыть HTML-версию
 
-GitHub показывает `.html` из репозитория как исходный код, а не как страницу. Есть два способа:
+GitHub показывает `.html` из репозитория как исходный код, а не как страницу. Есть три способа:
 
-1. **GitHub Pages.** В репозитории: Settings → Pages → Source: «Deploy from a branch» → ветка с папкой `docs`, папка `/docs` → Save. Через минуту отчёт откроется по ссылке в начале этого файла.
-2. **Скачать.** Сохранить файл из папки [docs](docs) и открыть двойным кликом. Картинки и стили встроены в файл. Интернет нужен только для формул: MathJax подгружается с cdnjs.
+1. **Ссылки в начале этого файла.** Они открывают страницы из папки `docs` через сервис htmlpreview.github.io. Работает, пока репозиторий публичный; в ссылках указана ветка `ktvd-design`.
+2. **GitHub Pages.** В репозитории: Settings → Pages → Source: «Deploy from a branch» → ветка `ktvd-design`, папка `/docs` → Save. Через минуту отчёт откроется по адресу `https://kulalex.github.io/statistics_lab_01/`.
+3. **Скачать.** Сохранить файл из папки [docs](docs) и открыть двойным кликом. Картинки и стили встроены в файл.
 
-В HTML код скрыт и раскрывается кнопкой «Показать код».
+Интернет нужен для формул: MathJax подгружается с cdnjs. В HTML код скрыт и раскрывается кнопкой «Показать код».
+
+Ноутбуки можно читать и прямо на GitHub: формулы, таблицы и рисунки отображаются. Но ссылки внутри ноутбука (оглавление, переходы к рисункам и таблицам) в просмотрщике GitHub не срабатывают — это его ограничение. В Jupyter и в HTML-версии они работают.
 
 ## Файлы
 
