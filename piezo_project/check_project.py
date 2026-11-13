@@ -44,7 +44,7 @@ class ProjectChecks(unittest.TestCase):
         self.assertGreater(ll(shape), ll(shape * 1.01))
 
     def test_notebook_scope_and_execution(self):
-        nb = json.loads((ROOT / 'lab01_sprint1_piezo.ipynb').read_text())
+        nb = json.loads((ROOT / 'lab01_sprint1_piezo.ipynb').read_text(encoding='utf-8'))
         text = '\n'.join(''.join(c['source']) for c in nb['cells'])
         for removed in ['RV03', 'x3', '#rv3', 'NIMS', '✎', 'напиши своими словами']:
             self.assertNotIn(removed, text)
@@ -55,7 +55,7 @@ class ProjectChecks(unittest.TestCase):
 
     def test_summary_matches_raw_data(self):
         import pandas as pd
-        raw = json.loads((ROOT / 'data/piezo.json').read_text())
+        raw = json.loads((ROOT / 'data/piezo.json').read_text(encoding='utf-8'))
         x1 = np.array([row['eij_max'] for row in raw])
         x2 = pd.read_csv(ROOT / 'data/matbench_dielectric_n_folds.csv').n.to_numpy()
         summary = pd.read_csv(ROOT / 'summary_metrics.csv', index_col=0)
@@ -85,7 +85,7 @@ class ProjectChecks(unittest.TestCase):
         self.assertFalse(h['эффект'].isna().any())
 
     def test_threshold_text_matches_experiment(self):
-        nb = json.loads((ROOT / 'lab01_sprint1_piezo.ipynb').read_text())
+        nb = json.loads((ROOT / 'lab01_sprint1_piezo.ipynb').read_text(encoding='utf-8'))
         text = '\n'.join(''.join(c['source']) for c in nb['cells'])
         self.assertNotIn('0.1σ', text)
         self.assertNotIn('0.1 * pop.std', text)
