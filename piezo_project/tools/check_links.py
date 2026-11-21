@@ -72,6 +72,14 @@ def main():
         sources[name] = links
         if name.endswith('.ipynb'):
             check_sequence(ids, name, errors)
+        elif name.endswith('.html'):
+            # htmlpreview.github.io переписывает ссылки с # на текущую страницу.
+            # Для межстраничного перехода нужен сохранённый data-page-target,
+            # который HTML-скрипт восстановит после обработки HTMLPreview.
+            for tag in re.findall(r'<a\b[^>]*>', text):
+                match = re.search(r'href="((?:index|sprint1|sprint2)\.html#[\w-]+)"', tag)
+                if match and f'data-page-target="{match.group(1)}"' not in tag:
+                    errors.append(f'{name}: ссылка {match.group(1)} не защищена от перенаправления HTMLPreview')
 
     urls = set()
     n_internal = 0

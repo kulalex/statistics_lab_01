@@ -217,6 +217,22 @@ document.getElementById('toggle-code')?.addEventListener('click', function () {
   this.dataset.open = open ? '1' : '';
   this.textContent = open ? 'Скрыть весь код' : 'Показать весь код';
 });
+// HTMLPreview вставляет <base> с адресом raw-файла, а затем ошибочно
+// перенаправляет ВСЕ ссылки с #якорем на текущий документ. Возвращаем
+// правильные переходы между страницами после его внутренней обработки.
+(function restorePreviewPageLinks() {
+  if (location.hostname !== 'htmlpreview.github.io') return;
+  var sourceUrl = location.search.slice(1)
+    .replace(/\/\/github\.com/, '//raw.githubusercontent.com')
+    .replace('/blob/', '/');
+  if (!/^https:\/\/raw\.githubusercontent\.com\//.test(sourceUrl)) return;
+  var directory = sourceUrl.slice(0, sourceUrl.lastIndexOf('/') + 1);
+  document.querySelectorAll('a[data-page-target]').forEach(function (link) {
+    var target = link.getAttribute('data-page-target');
+    if (!/^(?:index|sprint1|sprint2)\.html(?:#[\w-]+)?$/.test(target)) return;
+    link.href = 'https://htmlpreview.github.io/?' + directory + target;
+  });
+})();
 // Subtle reading-state indicator: the one visible contents menu follows the article.
 var tocLinks = Array.from(document.querySelectorAll('nav.toc a[data-anchor]'));
 var tocHeads = tocLinks.map(function (link) { return document.getElementById(link.dataset.anchor); });
@@ -500,6 +516,11 @@ def polish(body, page):
         for nb_name, target in LINKS.items():
             if href.startswith(nb_name):
                 a['href'] = target + href[len(nb_name):]
+        # HTMLPreview перезаписывает href для ссылок с #якорем так, что они
+        # ведут на текущий спринт. Сохраняем целевой документ отдельным
+        # атрибутом, чтобы восстановить его после загрузки сервиса.
+        if re.fullmatch(r'(?:index|sprint1|sprint2)\.html(?:#[\w-]+)?', a['href']):
+            a['data-page-target'] = a['href']
         if a['href'].startswith('http'):
             a['rel'] = 'noopener'
 
