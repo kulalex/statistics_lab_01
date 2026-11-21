@@ -368,15 +368,15 @@ if (!document.getElementById('mathjax-loader')) {
 <strong>КТвД (дизайнеры):</strong> 501924, 501195<br/>
 <strong>group_id команды:</strong> 454654</p>
 
-<p>Продолжение <a href="sprint1.html#top">спринта 1</a>. Там подобраны распределения для свойств материалов, здесь по этим распределениям строятся генераторы случайных чисел и проверяется, что сгенерированные значения ведут себя как модель и насколько они похожи на реальные данные.</p>
+<p>Продолжение <a data-page-target="sprint1.html#top" href="sprint1.html#top">спринта 1</a>. Там подобраны распределения для свойств материалов, здесь по этим распределениям строятся генераторы случайных чисел и проверяется, что сгенерированные значения ведут себя как модель и насколько они похожи на реальные данные.</p>
 
 
 
 <h2 id="intro"><span class="num">0.</span>Введение</h2>
 <h3 id="intro-task"><span class="num">0.1.</span>Задача спринта</h3><p>В спринте 1 исследованы три величины:</p>
 <ol>
-<li>$X_1=e_{ij}^{\max}$ — максимальный пьезоэлектрический коэффициент, Кл/м²; выбранная модель — распределение Ломакса, $\hat\alpha\approx1.568$, $\hat\lambda\approx0.473$ Кл/м² (<a href="sprint1.html#rv1-fit">спринт 1, раздел 1.2.3</a>).</li>
-<li>$X_2=n$ — показатель преломления; выбранная модель — GEV, параметры из спринта 1: $c\approx-0.281$, $\hat\mu\approx1.872$, $\hat\sigma\approx0.513$, в параметризации SciPy $c=-\xi$ (<a href="sprint1.html#rv2-fit">спринт 1, раздел 2.2.3</a>).</li>
+<li>$X_1=e_{ij}^{\max}$ — максимальный пьезоэлектрический коэффициент, Кл/м²; выбранная модель — распределение Ломакса, $\hat\alpha\approx1.568$, $\hat\lambda\approx0.473$ Кл/м² (<a data-page-target="sprint1.html#rv1-fit" href="sprint1.html#rv1-fit">спринт 1, раздел 1.2.3</a>).</li>
+<li>$X_2=n$ — показатель преломления; выбранная модель — GEV, параметры из спринта 1: $c\approx-0.281$, $\hat\mu\approx1.872$, $\hat\sigma\approx0.513$, в параметризации SciPy $c=-\xi$ (<a data-page-target="sprint1.html#rv2-fit" href="sprint1.html#rv2-fit">спринт 1, раздел 2.2.3</a>).</li>
 <li>$X_3=V/N$ — объём на атом, Å³/атом; выбранная модель — сдвинутое логнормальное распределение, $s\approx0.535$, $\hat\theta\approx3.902$ Å³/атом, $e^{\mu_Y}\approx12.814$ Å³/атом.</li>
 </ol>
 <p><strong>Цель спринта:</strong> построить генераторы для всех трёх распределений, подробно обосновать два разных алгоритма для $X_1$, проверить генераторы тестами, сравнить моделируемые выборки с исходными данными и обсудить ограничения выбранных моделей.</p>
@@ -408,7 +408,7 @@ if (!document.getElementById('mathjax-loader')) {
 
 <p>Разделы <a data-anchor="rnd1" href="#rnd1">1</a>–<a data-anchor="rnd4" href="#rnd4">4</a> устроены одинаково: что генерируем (Description), почему алгоритм верен (math desc), реализация (code), проверки (tests) и короткий итог (resume). В них проверяется сам генератор: выдаёт ли он заданное распределение. Вопрос, насколько это распределение похоже на реальные данные, вынесен в <a data-anchor="comparison" href="#comparison">раздел 5</a>: это свойство модели, а не алгоритма.</p>
 
-<h3 id="intro-glossary"><span class="num">0.3.</span>Словарь терминов и обозначения</h3><p>Общие термины и обозначения — в <a href="sprint1.html#intro-glossary">словаре</a> и <a href="sprint1.html#intro-notation">таблице обозначений</a> спринта 1. Здесь добавляются термины о генераторах.</p>
+<h3 id="intro-glossary"><span class="num">0.3.</span>Словарь терминов и обозначения</h3><p>Общие термины и обозначения — в <a data-page-target="sprint1.html#intro-glossary" href="sprint1.html#intro-glossary">словаре</a> и <a data-page-target="sprint1.html#intro-notation" href="sprint1.html#intro-notation">таблице обозначений</a> спринта 1. Здесь добавляются термины о генераторах.</p>
 <div class="table-wrap md-table"><table>
 <thead>
 <tr>
@@ -505,7 +505,7 @@ if (!document.getElementById('mathjax-loader')) {
 <p><a id="eq-0-1"></a>
 $$\ell(\alpha,\lambda)=m\ln\alpha-m\ln\lambda-(\alpha+1)\sum_{i=1}^m\ln(1+x_i/\lambda).\tag{0.1}$$</p>
 <p>Оценки — аргументы максимума этой функции. Для GEV и сдвинутой логнормальной модели используем численную MLE-оптимизацию SciPy. Сдвиг логнормального распределения может быть слабо идентифицируемым на конечной выборке, поэтому оценку <code>loc</code> нужно интерпретировать осторожно.</p>
-<p>Вывод оценок для Ломакса и GEV — в спринте 1, разделы <a href="sprint1.html#rv1-math">1.2.4</a> и <a href="sprint1.html#rv2-math">2.2.4</a>.</p>
+<p>Вывод оценок для Ломакса и GEV — в спринте 1, разделы <a data-page-target="sprint1.html#rv1-math" href="sprint1.html#rv1-math">1.2.4</a> и <a data-page-target="sprint1.html#rv2-math" href="sprint1.html#rv2-math">2.2.4</a>.</p>
 <p class="caption tab"><a id="tab-0-2"></a><strong>Табл. 0.2.</strong> Оценки параметров трёх моделей. Они используются всеми генераторами ниже.</p>
 <details class="code"><summary><span class="show">Показать код</span><span class="hide">Скрыть код</span></summary><div class="highlight"><pre><span></span><span class="n">par1</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">lomax</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">floc</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>          <span class="c1"># (alpha, loc, scale=lambda)</span>
 <span class="n">par2</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">genextreme</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>             <span class="c1"># (c=-xi, loc=mu, scale=sigma)</span>
@@ -559,7 +559,7 @@ $$\ell(\alpha,\lambda)=m\ln\alpha-m\ln\lambda-(\alpha+1)\sum_{i=1}^m\ln(1+x_i/\l
 <p class="back"><a data-anchor="toc" href="#toc">↑ к оглавлению</a></p>
 
 <h2 id="rnd1"><span class="num">1.</span>random 01 — Ломакс, метод обратной функции</h2>
-<h3 id="rnd1-desc"><span class="num">1.1.</span>Description</h3><p><strong>Что генерируем.</strong> Значения $X_1$ — модельный пьезокоэффициент $e_{ij}^{\max}$ в Кл/м². В <a href="sprint1.html#rv1-fit">спринте 1</a> для него выбрано распределение Ломакса: большинство значений малы, но изредка встречаются очень большие.</p>
+<h3 id="rnd1-desc"><span class="num">1.1.</span>Description</h3><p><strong>Что генерируем.</strong> Значения $X_1$ — модельный пьезокоэффициент $e_{ij}^{\max}$ в Кл/м². В <a data-page-target="sprint1.html#rv1-fit" href="sprint1.html#rv1-fit">спринте 1</a> для него выбрано распределение Ломакса: большинство значений малы, но изредка встречаются очень большие.</p>
 <p><strong>Идея метода.</strong> Функция распределения $F(x)$ каждому значению сопоставляет число от 0 до 1. Идём в обратную сторону: берём случайное число $U$ от 0 до 1 и находим то значение $x$, для которого $F(x)=U$. Для Ломакса обратная функция выписывается явно, поэтому генератор занимает одну строку.</p>
 
 <h3 id="rnd1-math"><span class="num">1.2.</span>math desc</h3><p>Для $x\geq0$, $\alpha&gt;0$, $\lambda&gt;0$:</p>
@@ -766,7 +766,7 @@ $$f(x)=\int_0^\infty \frac{t}{\lambda}e^{-tx/\lambda}
 <p class="back"><a data-anchor="toc" href="#toc">↑ к оглавлению</a></p>
 
 <h2 id="rnd3"><span class="num">3.</span>random 03 — GEV, квантильное преобразование</h2>
-<h3 id="rnd3-desc"><span class="num">3.1.</span>Description</h3><p><strong>Что генерируем.</strong> Значения $X_2$ — модельный показатель преломления $n$ (безразмерный). В <a href="sprint1.html#rv2-fit">спринте 1</a> для него разобрано обобщённое распределение экстремальных значений (GEV). Там же показано, что согласие GEV с данными отвергается критерием; генератор строится с этой оговоркой.</p>
+<h3 id="rnd3-desc"><span class="num">3.1.</span>Description</h3><p><strong>Что генерируем.</strong> Значения $X_2$ — модельный показатель преломления $n$ (безразмерный). В <a data-page-target="sprint1.html#rv2-fit" href="sprint1.html#rv2-fit">спринте 1</a> для него разобрано обобщённое распределение экстремальных значений (GEV). Там же показано, что согласие GEV с данными отвергается критерием; генератор строится с этой оговоркой.</p>
 <p><strong>Идея метода.</strong> Та же, что в <a data-anchor="rnd1" href="#rnd1">разделе 1</a>: равномерное число $U$ подставляется в квантильную функцию. Отличие в том, что квантиль берётся из готовой реализации SciPy.</p>
 
 <h3 id="rnd3-math"><span class="num">3.2.</span>math desc</h3><p>В параметризации экстремального значения:</p>
@@ -1246,12 +1246,12 @@ Z_2=\sqrt{-2\ln U_1}\sin(2\pi U_2).\tag{4.3}$$</p>
 </tr>
 </tbody>
 </table></div>
-<p>Распределение Ломакса согласуется с данными ($p$ = 0.30), GEV и сдвинутое логнормальное отвергаются ($p$ = 0.002). Для $X_1$ и $X_2$ это тот же результат, что в спринте 1 (<a href="sprint1.html#tab-3-1">табл. 3.1</a>), полученный другой реализацией бутстрепа.</p>
+<p>Распределение Ломакса согласуется с данными ($p$ = 0.30), GEV и сдвинутое логнормальное отвергаются ($p$ = 0.002). Для $X_1$ и $X_2$ это тот же результат, что в спринте 1 (<a data-page-target="sprint1.html#tab-3-1" href="sprint1.html#tab-3-1">табл. 3.1</a>), полученный другой реализацией бутстрепа.</p>
 <p class="back"><a data-anchor="toc" href="#toc">↑ к оглавлению</a></p>
 
 <h3 id="consistency"><span class="num">5.3.</span>Состоятельность оценок и эксперимент со сходимостью</h3><p>Состоятельность — свойство последовательности оценок: при увеличении объёма выборки оценка сходится по вероятности к истинному параметру. Здесь генеральная совокупность в эксперименте — конечный эмпирический массив из 941 значения $X_1$. Для каждого объёма $m$ много раз берём простую случайную выборку <strong>без возвращения</strong> и наблюдаем ошибку оценок относительно параметров, рассчитанных по всему массиву. Это демонстрация сходимости к характеристикам конечной эмпирической совокупности, а не строгое доказательство асимптотической состоятельности для неизвестной бесконечной популяции.</p>
 <p>Дополнительно показываем параметр $\alpha$ подогнанного распределения Ломакса. При малых выборках MLE может быть неустойчивой или не иметь конечного максимума; неудачные подгонки отмечаем отдельно, а не маскируем произвольным отсечением. Дисперсию Ломакса с $\alpha&lt;2$ не используем как теоретическую цель, поскольку она бесконечна.</p>
-<p>Тот же эксперимент для среднего, медианы и дисперсии описан в <a href="sprint1.html#rv1-cons">спринте 1, раздел 1.3.2</a>.</p>
+<p>Тот же эксперимент для среднего, медианы и дисперсии описан в <a data-page-target="sprint1.html#rv1-cons" href="sprint1.html#rv1-cons">спринте 1, раздел 1.3.2</a>.</p>
 <details class="code"><summary><span class="show">Показать код</span><span class="hide">Скрыть код</span></summary><div class="highlight"><pre><span></span><span class="n">consistency</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">consistency_experiment</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">alpha_hat</span><span class="p">)</span>
 <span class="n">G</span><span class="o">.</span><span class="n">consistency_figure</span><span class="p">(</span><span class="n">consistency</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -1698,7 +1698,7 @@ Z_2=\sqrt{-2\ln U_1}\sin(2\pi U_2).\tag{4.3}$$</p>
 <li><a id="ref-3"></a>Petousis I. et al. High-throughput screening of inorganic compounds for the discovery of novel dielectric and optical materials // Sci. Data. 2017. V. 4. 160134. DOI: <a href="https://doi.org/10.1038/sdata.2016.134" rel="noopener">10.1038/sdata.2016.134</a>.</li>
 <li><a id="ref-4"></a>Dunn A. et al. Benchmarking materials property prediction methods: the Matbench test set and Automatminer reference algorithm // npj Comput. Mater. 2020. V. 6. 138. DOI: <a href="https://doi.org/10.1038/s41524-020-00406-3" rel="noopener">10.1038/s41524-020-00406-3</a>.</li>
 </ol>
-<p>Полный список источников по данным и статистическим методам — в <a href="sprint1.html#refs">спринте 1, раздел 4</a>.</p>
+<p>Полный список источников по данным и статистическим методам — в <a data-page-target="sprint1.html#refs" href="sprint1.html#refs">спринте 1, раздел 4</a>.</p>
 <p class="back"><a data-anchor="toc" href="#toc">↑ к оглавлению</a></p>
 
 </main>
@@ -1713,6 +1713,22 @@ document.getElementById('toggle-code')?.addEventListener('click', function () {
   this.dataset.open = open ? '1' : '';
   this.textContent = open ? 'Скрыть весь код' : 'Показать весь код';
 });
+// HTMLPreview вставляет <base> с адресом raw-файла, а затем ошибочно
+// перенаправляет ВСЕ ссылки с #якорем на текущий документ. Возвращаем
+// правильные переходы между страницами после его внутренней обработки.
+(function restorePreviewPageLinks() {
+  if (location.hostname !== 'htmlpreview.github.io') return;
+  var sourceUrl = location.search.slice(1)
+    .replace(/\/\/github\.com/, '//raw.githubusercontent.com')
+    .replace('/blob/', '/');
+  if (!/^https:\/\/raw\.githubusercontent\.com\//.test(sourceUrl)) return;
+  var directory = sourceUrl.slice(0, sourceUrl.lastIndexOf('/') + 1);
+  document.querySelectorAll('a[data-page-target]').forEach(function (link) {
+    var target = link.getAttribute('data-page-target');
+    if (!/^(?:index|sprint1|sprint2)\.html(?:#[\w-]+)?$/.test(target)) return;
+    link.href = 'https://htmlpreview.github.io/?' + directory + target;
+  });
+})();
 // Subtle reading-state indicator: the one visible contents menu follows the article.
 var tocLinks = Array.from(document.querySelectorAll('nav.toc a[data-anchor]'));
 var tocHeads = tocLinks.map(function (link) { return document.getElementById(link.dataset.anchor); });
