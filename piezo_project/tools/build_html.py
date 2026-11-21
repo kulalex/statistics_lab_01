@@ -67,6 +67,42 @@ h2{font-size:1.5rem;padding-top:1.4rem;border-top:1px solid var(--line)}
 h3{font-size:1.18rem}
 h4{font-size:1rem}
 .num{color:var(--muted);font-weight:600;margin-right:.35em}
+/* Print-editorial identity: ink, mineral blue, copper, warm paper. */
+:root{--bg:#f8f7f3;--surface:#fff;--ink:#162e37;--ink2:#4e5e61;--muted:#718085;--line:#dce1df;
+--accent:#126e79;--accent-bg:#e7f1f0;--code-bg:#f2f5f3;--w-text:49rem;--w-wide:69rem}
+body{font-family:"Segoe UI",Inter,Arial,sans-serif;line-height:1.73}
+html{scroll-behavior:smooth;scroll-padding-top:5.2rem}
+::selection{background:#c1e2df;color:#102d37}
+a{color:#086a78}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #db8468;outline-offset:3px}
+.top{background:#fdfcf9;min-height:4.25rem;border-bottom:1px solid #d1dad8;padding:.65rem clamp(1rem,3vw,2.6rem);gap:1rem 1.5rem}
+.top .brand{display:flex;align-items:center;gap:.65rem;color:#173a43;font-size:.98rem;letter-spacing:-.02em}
+.brand-symbol{display:grid;place-items:center;background:#173a43;color:#f7ded0;width:2.15rem;height:2.15rem;border-radius:4px;font-size:.79rem;letter-spacing:.02em}
+.top a.nav{font-weight:620;color:#526568;padding:.42rem .18rem}
+.top a.nav[aria-current=page]{color:#a54b31;border-bottom-color:#c9694c}
+.top button{border-color:#b3c9c9;color:#23515a;border-radius:5px;padding:.36rem .74rem;background:#eff7f6;font-size:.8rem;font-weight:600}
+.layout{grid-template-columns:18.7rem minmax(0,1fr);max-width:100rem;gap:clamp(2rem,4vw,5rem);padding:0 clamp(1rem,3vw,2.6rem)}
+nav.toc{top:5rem;max-height:calc(100vh - 5rem);background:#173942;color:#ddecea;padding:1.7rem 1.05rem 2rem;border-radius:0 0 9px 9px;scrollbar-width:thin;scrollbar-color:#829a9b transparent;box-shadow:inset 0 4px #cb755a}
+nav.toc .toc-title{color:#f1b39a;font-weight:700;font-size:.71rem;letter-spacing:.16em;margin:0 0 .9rem}
+nav.toc a{color:#c1d6d6;border-left:2px solid #46656b;border-radius:0 4px 4px 0;padding:.33rem .65rem;line-height:1.45;transition:background .15s,border-color .15s}
+nav.toc li.l2>a{color:#f8f9f5;font-weight:670;margin-top:.7rem}
+nav.toc a:hover,nav.toc a.is-active{color:#fff;background:#27545b;border-left-color:#eb9477}
+nav.toc a.is-active{font-weight:690}
+.toc-search{display:block;width:100%;background:#244a53;color:#fff;border:1px solid #54717a;border-radius:5px;padding:.56rem .7rem;font:inherit;font-size:.79rem;margin-bottom:1rem}
+.toc-search::placeholder{color:#bfd2d2}
+.toc-empty{font-size:.78rem;color:#cadcdd;padding:.5rem}
+main{padding:2.2rem 0 6rem}
+main>p{line-height:1.78;color:#384c52}
+h1{font-family:Georgia,"Times New Roman",serif;font-weight:700;font-size:clamp(2.05rem,3.1vw,2.9rem);line-height:1.19;letter-spacing:-.025em;max-width:58rem;margin:.2rem 0 1.3rem;color:#173943}
+h1:before{content:"ИССЛЕДОВАНИЕ  /  LAB 01";display:block;font-family:"Segoe UI",Arial,sans-serif;color:#b15b42;font-weight:750;letter-spacing:.17em;font-size:.7rem;margin:0 0 1rem}
+h2{font-family:Georgia,"Times New Roman",serif;color:#193c46;font-size:1.8rem;letter-spacing:-.02em;padding:1.5rem 0 .58rem;border-top:2px solid #193f48;border-bottom:1px solid #d7dfdc;margin:3.5rem 0 1.2rem}
+h3{font-family:"Segoe UI",Arial,sans-serif;color:#1c4952;font-size:1.23rem;letter-spacing:-.01em;margin:2.5rem 0 .7rem;padding-left:.85rem;border-left:3px solid #d4785b}
+h2 .num{color:#bd654e;font-family:"Segoe UI",Arial,sans-serif;font-size:.78em;font-weight:800;margin-right:.5em;font-variant-numeric:tabular-nums}
+h3 .num{color:#a85a47;font-weight:700}
+h2[id],h3[id]{scroll-margin-top:5.4rem}
+.page-index h1{font-size:clamp(2.5rem,4vw,3.65rem);max-width:55rem;margin-bottom:1.6rem}
+blockquote{border-left:4px solid #bc7557;background:#f8eee9;color:#4a514b;padding:.7rem 1.3rem;border-radius:0 5px 5px 0}
+hr{border-color:#d3deda;margin:2.5rem 0}
 nav.toc .num,details.toc-mobile .num{font-weight:inherit}
 p{margin:.7em 0}
 ul,ol{padding-left:1.4rem}
@@ -75,20 +111,43 @@ hr{border:0;border-top:1px solid var(--line);margin:2rem 0}
 code{font:.88em/1.5 ui-monospace,"Cascadia Mono",Consolas,Menlo,monospace;background:var(--code-bg);padding:.08em .32em;border-radius:4px}
 blockquote{margin:1em 0;padding:.2em 1em;border-left:3px solid var(--accent);background:var(--accent-bg);border-radius:0 6px 6px 0}
 .table-wrap{overflow-x:auto;width:fit-content;max-width:100%;margin:.9rem 0 1.3rem;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+.table-wrap{border-radius:7px;border:1px solid #b7cdca;border-top:3px solid #126e79;margin:1.2rem 0 2rem;background:#fff;box-shadow:0 8px 22px #24464d0b}
 .table-wrap.md-table{width:auto}
 table{border-collapse:collapse;font-size:.86rem;line-height:1.35;font-variant-numeric:tabular-nums}
 .md-table table{width:100%}
 table.rowhead td:first-child{font-weight:600;text-align:left;color:var(--ink)}
 th,td{padding:.42rem .7rem;border-bottom:1px solid var(--line);text-align:right;vertical-align:top;white-space:nowrap}
 thead th{background:#f6f5f2;color:var(--ink2);font-weight:600;border-bottom:1px solid var(--muted);vertical-align:bottom}
+thead th{background:#e6f0ee;color:#173f46;border-bottom:2px solid #a9cbc6;font-weight:750}
+tbody tr:nth-child(even){background:#f4f8f7}
+tbody tr:hover{background:#eaf5f2}
+th,td{padding:.68rem .88rem;line-height:1.45}
+.md-table td:first-child,.md-table th:first-child{font-weight:650;color:#26434a}
 tbody th{font-weight:600;text-align:left;color:var(--ink)}
 tbody tr:last-child>*{border-bottom:0}
 td.txt,th.txt{text-align:left;white-space:normal;min-width:8rem}
 .md-table td,.md-table th{white-space:normal;text-align:left}
 .out{margin:.6rem 0}
 .out img{display:block;max-width:100%;height:auto;margin:0 auto;border:1px solid var(--line);border-radius:8px;background:#fff}
+.figure-plate{max-width:var(--w-wide);margin:1.5rem 0 2rem;background:white;border:1px solid #d0dfdd;border-top:4px solid #397e89;border-radius:6px;overflow:hidden;box-shadow:0 11px 26px #153b460e}
+.figure-plate .out{margin:0}
+.figure-plate img{border:0;border-radius:0;box-shadow:none;cursor:zoom-in}
+.figure-index{display:flex;align-items:center;gap:.9rem;margin:0;padding:.8rem 1.2rem;color:#1b5862;font-size:.7rem;font-weight:750;letter-spacing:.12em;text-transform:uppercase;background:#eff6f5}
+.figure-index:after{content:"";height:1px;background:#bfd8d6;flex:1}
+.figure-zoom{background:#fff;border:1px solid #91b5b5;color:#26626a;border-radius:5px;font:inherit;font-size:.68rem;letter-spacing:0;padding:.25rem .55rem;cursor:pointer}
+.figure-zoom{margin-left:auto}
+.figure-plate .out{padding:1rem 1.1rem .55rem}
+.figure-plate p.caption{margin:0!important;padding:.85rem 1.25rem 1.1rem!important;border:0!important;border-top:1px solid #e1eae8!important;background:#f9fbfa;color:#51666a;font-size:.86rem;line-height:1.65}
+.figure-key{display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap;padding:.2rem 1.2rem .8rem;font-size:.73rem;color:#53696d}
+.figure-key .swatch{display:inline-block;vertical-align:middle;width:.72rem;height:.72rem;border-radius:2px;margin-right:.35rem}
+dialog.figure-modal{max-width:96vw;max-height:94vh;border:0;border-radius:6px;padding:1rem;background:#fff;box-shadow:0 30px 90px #0008}
+dialog.figure-modal::backdrop{background:#0c222bcf;backdrop-filter:blur(3px)}
+.figure-modal img{display:block;max-width:92vw;max-height:84vh;object-fit:contain}
+.figure-modal button{display:block;margin:0 0 .7rem auto;background:#173942;border:0;border-radius:4px;padding:.4rem .8rem;color:#fff;cursor:pointer}
 .out pre.stream{margin:.4rem 0;padding:.6rem .9rem;background:var(--code-bg);border-radius:6px;font:.82rem/1.5 ui-monospace,Consolas,monospace;white-space:pre-wrap;overflow-x:auto}
 p.caption{font-size:.9rem;line-height:1.5;color:var(--ink2);margin:.5rem 0 1.6rem;padding-left:.9rem;border-left:3px solid var(--line);max-width:var(--w-wide)}
+p.caption:not(.tab){padding:.6rem 0 0;border-left:0;border-top:1px solid #e1e5e0;margin:.35rem 0 2.1rem;font-size:.85rem;color:#5e6962;line-height:1.65}
+p.caption.tab{padding-left:0;border-left:0;margin:1.6rem 0 .55rem;color:#31453a;font-size:.9rem}
 p.caption strong:first-of-type{color:var(--ink)}
 p.caption.tab{margin:1.4rem 0 .4rem}
 details.code{margin:.3rem 0}
@@ -110,6 +169,18 @@ mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;padding:.2rem 0;ma
 footer{border-top:1px solid var(--line);color:var(--muted);font-size:.85rem;padding:1.2rem;text-align:center}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));gap:1rem;max-width:var(--w-wide)!important;margin:1.4rem 0}
 .card{display:block;padding:1.1rem 1.2rem;border:1px solid var(--line);border-radius:10px;background:var(--surface);text-decoration:none;color:var(--ink)}
+.card{border:1px solid #cbdedb;border-top:4px solid #247c85;border-radius:8px;padding:1.6rem 1.5rem;box-shadow:0 9px 24px #153b460c;transition:transform .2s,box-shadow .2s}
+.card:nth-child(2){border-top-color:#ce7657}
+.card:hover{transform:translateY(-3px);box-shadow:0 16px 28px #153b461b;border-color:#5f9ea4}
+.card .k{color:#b5634c;font-weight:750;letter-spacing:.14em}
+.card h3{border:0;padding:0;color:#173a43;font-family:Georgia,"Times New Roman",serif;font-size:1.37rem}
+.page-index .cards{margin:2rem 0 3rem}
+.page-index main>h1{position:relative;background:#173942;color:#fff;max-width:var(--w-wide);border-bottom:5px solid #d27a5c;margin:0 0 1.5rem;padding:clamp(1.7rem,4vw,3.5rem);border-radius:8px 8px 0 0;isolation:isolate}
+.page-index main>h1:before{color:#eab19c}
+.page-index main>h1:after{content:"";position:absolute;right:1.6rem;bottom:1rem;width:6rem;height:6rem;background:radial-gradient(circle at center,#d9ebe6 1.8px,transparent 2.4px) 0 0 / 21px 21px;opacity:.3;z-index:-1}
+.page-index main>h1+p{font-size:1.13rem;line-height:1.7;color:#34515a;max-width:47rem;margin:1.4rem 0 2rem}
+footer{background:#183942;color:#d2e1df;border:0;padding:1.8rem}
+footer a{color:#b9e6df}
 .card:hover{border-color:var(--accent);box-shadow:0 2px 10px rgba(31,95,174,.08)}
 .card .k{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .card h3{margin:.25rem 0 .4rem;font-size:1.15rem}
@@ -128,6 +199,14 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:.85rem;padd
  h1{font-size:1.6rem} h2{font-size:1.3rem}
 }
 @media print{.top,nav.toc,details.toc-mobile,details.code,.back{display:none}.layout{display:block}body{font-size:11pt;background:#fff}}
+@media(max-width:62rem){
+ .layout{padding:0 1rem}.top{gap:.5rem 1rem}.top .brand{width:100%;margin-bottom:.15rem}
+ details.toc-mobile{background:#e6f0ee;border:1px solid #aacbc6;padding:.75rem 1rem}
+ h1{font-size:2rem}h2{font-size:1.53rem}h3{font-size:1.14rem}
+ .figure-index{padding:.65rem .8rem}.figure-plate .out{padding:.5rem}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card,nav.toc a{transition:none}}
+@media print{.figure-plate{box-shadow:none;break-inside:avoid}footer{background:white;color:#333}.figure-zoom{display:none}}
 '''
 
 JS = r'''
@@ -137,6 +216,58 @@ document.getElementById('toggle-code')?.addEventListener('click', function () {
   all.forEach(function (d) { d.open = open; });
   this.dataset.open = open ? '1' : '';
   this.textContent = open ? 'Скрыть весь код' : 'Показать весь код';
+});
+// Subtle reading-state indicator: the one visible contents menu follows the article.
+var tocLinks = Array.from(document.querySelectorAll('nav.toc a[data-anchor]'));
+var tocHeads = tocLinks.map(function (link) { return document.getElementById(link.dataset.anchor); });
+var pendingTocUpdate = false;
+function updateToc() {
+  var active = -1;
+  tocHeads.forEach(function (head, index) {
+    if (head && head.getBoundingClientRect().top < 170) active = index;
+  });
+  tocLinks.forEach(function (link, index) {
+    link.classList.toggle('is-active', active === index);
+    if (active === index) link.setAttribute('aria-current', 'location');
+    else link.removeAttribute('aria-current');
+  });
+  pendingTocUpdate = false;
+}
+window.addEventListener('scroll', function () {
+  if (!pendingTocUpdate) {
+    pendingTocUpdate = true;
+    requestAnimationFrame(updateToc);
+  }
+}, {passive:true});
+updateToc();
+document.getElementById('toc-search')?.addEventListener('input', function () {
+  var query = this.value.trim().toLocaleLowerCase('ru');
+  var matches = 0;
+  document.querySelectorAll('nav.toc li').forEach(function (li) {
+    var visible = li.textContent.toLocaleLowerCase('ru').includes(query);
+    li.hidden = !visible;
+    if (visible) matches++;
+  });
+  var empty = document.querySelector('.toc-empty');
+  if (empty) empty.hidden = matches > 0;
+});
+document.addEventListener('click', function (event) {
+  var control = event.target.closest('.figure-zoom, .figure-plate img');
+  if (!control) return;
+  var plate = control.closest('.figure-plate');
+  var original = plate && plate.querySelector('img');
+  var dialog = document.getElementById('figure-modal');
+  if (!original || !dialog || !dialog.showModal) return;
+  var large = dialog.querySelector('img');
+  large.src = original.src;
+  large.alt = original.alt;
+  dialog.showModal();
+});
+document.querySelector('#figure-modal button')?.addEventListener('click', function () {
+  document.getElementById('figure-modal').close();
+});
+document.getElementById('figure-modal')?.addEventListener('click', function (event) {
+  if (event.target === this) this.close();
 });
 // Переход по якорю внутри страницы. Нужен там, где страница подставляется скриптом
 // (htmlpreview.github.io) и браузер сам к якорю не прокручивает.
@@ -246,6 +377,17 @@ def polish(body, page):
         if h.name in ('h2', 'h3') and h.get('id'):
             toc.append((h.name, h['id'], h.decode_contents()))
 
+    # В ноутбуке сохранено собственное оглавление для Jupyter. В HTML меню уже
+    # вынесено в боковую колонку: убираем копию, не трогая исходный ноутбук.
+    for h in soup.find_all('h2', id='toc'):
+        sibling = h.find_next_sibling()
+        while sibling is not None and sibling.name not in ('h1', 'h2'):
+            following = sibling.find_next_sibling()
+            sibling.decompose()
+            sibling = following
+        h.decompose()
+    toc = [item for item in toc if item[1] != 'toc']
+
     # подписи к рисункам и таблицам
     for a in soup.find_all('a', id=re.compile(r'^(fig|tab)-')):
         p = a.find_parent('p')
@@ -260,6 +402,58 @@ def polish(body, page):
         cap = img.find_parent('div').find_next_sibling('p', class_='caption')
         if cap is not None:
             img['alt'] = re.sub(r'\s+', ' ', cap.get_text(' ', strip=True))[:300]
+            anchor = cap.find('a', id=re.compile(r'^fig-'))
+            parent = img.find_parent('div', class_='out')
+            if anchor is not None and parent is not None:
+                plate = soup.new_tag('figure', attrs={'class': 'figure-plate'})
+                parent.wrap(plate)
+                label = soup.new_tag('div', attrs={'class': 'figure-index'})
+                figure_topics = {
+                    'sprint1.html': {
+                        'fig-0-1': 'Дизайн исследования',
+                        'fig-1-1': 'Разведочный анализ', 'fig-1-2': 'Подбор распределения',
+                        'fig-1-3': 'Связь величин', 'fig-1-4': 'Состоятельность оценок',
+                        'fig-1-5': 'Состоятельность оценок', 'fig-2-1': 'Проверка предсказаний',
+                        'fig-2-2': 'Разведочный анализ', 'fig-2-3': 'Подбор распределения',
+                        'fig-2-4': 'Состоятельность оценок', 'fig-2-5': 'Состоятельность оценок'},
+                    'sprint2.html': {
+                        'fig-0-1': 'План исследования', 'fig-1-1': 'Проверка генератора',
+                        'fig-2-1': 'Проверка генератора', 'fig-3-1': 'Проверка генератора',
+                        'fig-4-1': 'Проверка генератора', 'fig-5-1': 'Сравнение с данными',
+                        'fig-5-2': 'Состоятельность оценок'}
+                }
+                k = anchor['id']
+                label.string = figure_topics.get(page, {}).get(k, 'Иллюстрация')
+                button = soup.new_tag('button', attrs={'class': 'figure-zoom', 'type': 'button',
+                                                       'aria-label': 'Увеличить рисунок'})
+                button.string = 'Развернуть ↗'
+                label.append(button)
+                plate.insert(0, label)
+                # Пояснение остаётся оригинальным: подпись из ноутбука переносим
+                # непосредственно под график как журнальную подпись.
+                plate.append(cap.extract())
+                key = soup.new_tag('div', attrs={'class': 'figure-key'})
+                roles = [('Данные', '#2a78d6')]
+                if page == 'sprint2.html' and k in {'fig-1-1', 'fig-2-1', 'fig-3-1', 'fig-4-1'}:
+                    roles = [('Генератор', '#1baf7a'), ('Модель', '#eb6834')]
+                elif page == 'sprint2.html' and k == 'fig-5-1':
+                    roles = [('Данные', '#2a78d6'), ('Генератор', '#1baf7a')]
+                elif page == 'sprint2.html' and k == 'fig-0-1':
+                    roles = [('Данные', '#2a78d6'), ('Модель', '#eb6834'), ('Генератор', '#1baf7a')]
+                elif page == 'sprint1.html' and k in {'fig-1-2', 'fig-2-3'}:
+                    roles.append(('Модель', '#eb6834'))
+                elif page == 'sprint1.html' and k == 'fig-0-1':
+                    roles = [('Данные', '#2a78d6'), ('Модель', '#eb6834'), ('Генератор', '#1baf7a')]
+                # Не показывать ложную универсальную легенду на диаграммах
+                # состоятельности и паритетных графиках.
+                if k not in {'fig-1-4', 'fig-1-5', 'fig-2-1', 'fig-2-4', 'fig-2-5', 'fig-5-2'}:
+                    for name, color in roles:
+                        dot = soup.new_tag('span', attrs={'class': 'swatch', 'style': f'background:{color}'})
+                        item = soup.new_tag('span')
+                        item.append(dot)
+                        item.append(name)
+                        key.append(item)
+                    plate.insert(2, key)
 
     # таблицы
     for style in soup.find_all('style'):
@@ -321,11 +515,15 @@ def shell(title, body, toc, current, extra_class=''):
     nav = ''.join(f'<a class="nav" href="{page}"{" aria-current=page" if page == current else ""}>{label}</a>'
                   for _, page, label in PAGES)
     home = ' aria-current=page' if current == 'index.html' else ''
-    side = (f'<nav class="toc" aria-label="Оглавление"><p class="toc-title">Оглавление</p>{toc_html(toc)}</nav>'
+    side = (f'<nav class="toc" aria-label="Оглавление"><p class="toc-title">Разделы исследования</p>'
+            f'<input id="toc-search" class="toc-search" type="search" placeholder="Найти раздел" '
+            f'aria-label="Поиск по оглавлению">{toc_html(toc)}'
+            f'<p class="toc-empty" hidden>Раздел не найден</p></nav>'
             if toc else '')
     mobile = f'<details class="toc-mobile"><summary>Оглавление</summary>{toc_html(toc)}</details>' if toc else ''
     button = '<button id="toggle-code" type="button">Показать весь код</button>' if toc else ''
     pygments_css = HtmlFormatter(style='default').get_style_defs('.highlight')
+    page_class = current.removesuffix('.html')
     return f'''<!doctype html>
 <html lang="ru">
 <head>
@@ -350,19 +548,21 @@ if (!document.getElementById('mathjax-loader')) {{
 }}
 </script>
 </head>
-<body class="{extra_class}">
+<body class="{extra_class} page-{page_class}">
 <header class="top">
-<a class="brand" href="index.html">Лабораторная работа 1</a>
+<a class="brand" href="index.html"><span class="brand-symbol">01</span> ИнфоХимия / Статистика</a>
 <a class="nav" href="index.html"{home}>Обзор</a>{nav}
 {button}
 </header>
 <div class="layout">
 {side}
 <main>
+<div id="toc"></div>
 {mobile}
 {body}
 </main>
 </div>
+<dialog id="figure-modal" class="figure-modal" aria-label="Просмотр графика крупно"><button type="button">Закрыть ×</button><img alt=""></dialog>
 <footer>Собрано из ноутбуков репозитория <a href="{REPO_URL}">statistics_lab_01</a>. Код свёрнут и раскрывается по клику.</footer>
 <script>{JS}</script>
 </body>
